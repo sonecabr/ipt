@@ -18,8 +18,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.GenerationTime;
-
 
 @Entity(name="item")
 public class Item {
