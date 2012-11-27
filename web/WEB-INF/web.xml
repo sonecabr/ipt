@@ -11,9 +11,9 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.controller</url-pattern>
+		<url-pattern>*.ipt</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>/index.controller</welcome-file>
+		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

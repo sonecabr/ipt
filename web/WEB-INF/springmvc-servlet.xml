@@ -2,32 +2,41 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="br.com.soneca.iptj.web" />
+	<context:property-placeholder location="classpath:localhost.properties" />
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}" 
+		p:password="${jdbc.password}"> </bean> -->
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}"
-		p:password="${jdbc.password}">
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/DefaultDS" />
 	</bean>
 
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation">
-			<value>classpath:persistence.xml</value>
+			<value>classpath:hibernate.cfg.xml</value>
 		</property>
 	</bean>
 
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven />
@@ -43,7 +52,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		</property>
 		<property name="opTimeout" value="1000" />
 		<property name="timeoutExceptionThreshold" value="1998" />
-		<property name="hashAlg" value="KETAMA_HASH" />
+		<!-- property name="hashAlg" value="KETAMA_HASH" /-->
 		<property name="locatorType" value="CONSISTENT" />
 		<property name="failureMode" value="Redistribute" />
 		<property name="useNagleAlgorithm" value="false" />
