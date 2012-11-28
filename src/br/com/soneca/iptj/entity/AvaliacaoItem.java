@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Entity(name="item_avaliacao")
-public class AvaliacaoItem {
+public class AvaliacaoItem implements br.com.soneca.iptj.entity.Entity{
 	
 	@Id
 	@Column(name="id", nullable=false)

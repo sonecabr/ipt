@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Entity
-public class ItemTipo {
+public class ItemTipo implements br.com.soneca.iptj.entity.Entity {
 
 	@Id
 	@Column(name="id")

@@ -24,7 +24,7 @@ import com.google.gson.GsonBuilder;
  */
 @Entity
 @Table(name="cadastro")
-public class Cadastro {
+public class Cadastro implements br.com.soneca.iptj.entity.Entity {
 	
 	@Id
 	@Column(name="id")

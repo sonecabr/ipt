@@ -13,7 +13,7 @@ import com.google.gson.GsonBuilder;
 
 
 @Entity
-public class AvaliacaoUsuario {
+public class AvaliacaoUsuario implements br.com.soneca.iptj.entity.Entity {
 
 	@Id
 	@Column(name="id", nullable=false)

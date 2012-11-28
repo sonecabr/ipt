@@ -23,7 +23,7 @@ import com.google.gson.GsonBuilder;
 
 
 @Entity(name="item")
-public class Item {
+public class Item implements br.com.soneca.iptj.entity.Entity {
 
 	@Id
 	@Column(name="id")
