@@ -15,6 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 @Entity(name="loja")
 public class Loja {
 	
@@ -108,6 +111,12 @@ public class Loja {
 
 	public void setItems(Set<Item> items) {
 		this.items = items;
+	}
+	
+	@Override
+	public String toString(){
+		Gson gSon = new GsonBuilder().setDateFormat("dd/MM/yyyy-HH:mm:ss").create();
+		return gSon.toJson(this);
 	}
 
 }

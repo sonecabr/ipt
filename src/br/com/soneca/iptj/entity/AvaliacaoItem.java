@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 @Entity(name="item_avaliacao")
 public class AvaliacaoItem {
 	
@@ -35,5 +38,11 @@ public class AvaliacaoItem {
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+	
+	@Override
+	public String toString(){
+		Gson gSon = new GsonBuilder().setDateFormat("dd/MM/yyyy-HH:mm:ss").create();
+		return gSon.toJson(this);
 	}
 }

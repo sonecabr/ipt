@@ -18,8 +18,5 @@ public enum TipoLoja {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	
 
 }

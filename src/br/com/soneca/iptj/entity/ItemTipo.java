@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 @Entity
 public class ItemTipo {
 
@@ -31,6 +34,12 @@ public class ItemTipo {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	@Override
+	public String toString(){
+		Gson gSon = new GsonBuilder().setDateFormat("dd/MM/yyyy-HH:mm:ss").create();
+		return gSon.toJson(this);
 	}
 	
 }

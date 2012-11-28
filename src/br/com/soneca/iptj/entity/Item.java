@@ -18,6 +18,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 @Entity(name="item")
 public class Item {
@@ -42,6 +45,26 @@ public class Item {
 	
 	@ManyToMany(mappedBy="items", fetch=FetchType.LAZY)
 	private Set<Loja> lojas;
+	
+	public Item(){
+		super();
+	}
+	
+	public Item(Long id, String titulo, String descricao, Date data, ItemTipo itemTipo, Set<Loja> lojas){
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.data = data;
+		this.itemTipo = itemTipo;
+		this.lojas = lojas;
+	}
+	
+	@Override
+	public String toString(){
+		Gson gSon = new GsonBuilder().setDateFormat("dd/MM/yyyy-HH:mm:ss").create();
+		return gSon.toJson(this);
+	}
 	
 	public Long getId() {
 		return id;

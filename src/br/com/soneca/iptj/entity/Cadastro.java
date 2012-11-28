@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /**
  * 
  * @author soneca
@@ -146,5 +149,11 @@ public class Cadastro {
 	@PreUpdate
 	public void beforeSave(){
 		dtUltimoAcesso = GregorianCalendar.getInstance().getTime();
+	}
+	
+	@Override
+	public String toString(){
+		Gson gSon = new GsonBuilder().setDateFormat("dd/MM/yyyy-HH:mm:ss").create();
+		return gSon.toJson(this);
 	}
 }
