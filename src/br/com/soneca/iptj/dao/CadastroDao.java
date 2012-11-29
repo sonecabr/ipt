@@ -2,6 +2,9 @@ package br.com.soneca.iptj.dao;
 
 import java.util.Collection;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,9 +13,11 @@ import br.com.soneca.iptj.exception.IptDaoException;
 
 
 @Repository
-@Transactional(readOnly = true)
-public class CadastroDao implements Dao{
+@Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+public class CadastroDao implements Dao {
 
+	
+	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.SUPPORTS)
 	public Entity save(Entity objectToSave) throws IptDaoException {

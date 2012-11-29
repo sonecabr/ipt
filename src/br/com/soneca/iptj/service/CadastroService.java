@@ -1,7 +1,7 @@
 package br.com.soneca.iptj.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
 import br.com.soneca.iptj.dao.CadastroDao;
@@ -10,7 +10,7 @@ import br.com.soneca.iptj.exception.IptBusinessException;
 import br.com.soneca.iptj.exception.IptDaoException;
 
 
-@Component
+@Service
 public class CadastroService {
 	
 	@Autowired
