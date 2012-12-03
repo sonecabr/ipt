@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@Entity(name="avaliacao_loja")
+@Entity
+@Table(name="avaliacao_loja")
 public class AvaliacaoLoja implements br.com.soneca.iptj.entity.Entity{
 	
 	@Id
@@ -19,8 +22,7 @@ public class AvaliacaoLoja implements br.com.soneca.iptj.entity.Entity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@JoinColumn(referencedColumnName="id", name="loja_id", table="loja", nullable=false)
-	@OneToMany
+	@ManyToOne
 	private Loja loja;	
 
 	@Column(name="pontos", nullable=false)

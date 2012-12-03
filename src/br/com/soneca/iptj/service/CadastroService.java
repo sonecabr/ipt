@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.soneca.iptj.dao.CadastroDao;
+import br.com.soneca.iptj.dao.Dao;
 import br.com.soneca.iptj.entity.Cadastro;
 import br.com.soneca.iptj.exception.IptBusinessException;
 import br.com.soneca.iptj.exception.IptDaoException;
@@ -14,7 +15,7 @@ import br.com.soneca.iptj.exception.IptDaoException;
 public class CadastroService {
 	
 	@Autowired
-	private CadastroDao cadastroDao;
+	private Dao cadastroDao;
 	
 	public Cadastro save(Cadastro cadastro) throws IptBusinessException {
 		try{

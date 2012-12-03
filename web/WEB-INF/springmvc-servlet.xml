@@ -60,45 +60,6 @@
 			<ref bean="localeChangeInterceptor" />
 		</property>
 	</bean>
-	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
-		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}" 
-		p:password="${jdbc.password}"> </bean> -->
-
-
-	<!-- 
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/DefaultDS" />
-	</bean>
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation">
-			<value>classpath:hibernate.cfg.xml</value>
-		</property>
-	</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<tx:annotation-driven />
-	 -->
-	<!-- memcached --
-	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-		<property name="servers" value="${memcached.url}" />
-		<property name="protocol" value="BINARY" />
-		<property name="transcoder">
-			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
-				<property name="compressionThreshold" value="1024" />
-			</bean>
-		</property>
-		<property name="opTimeout" value="1000" />
-		<property name="timeoutExceptionThreshold" value="1998" />
-		
-		<property name="locatorType" value="CONSISTENT" />
-		<property name="failureMode" value="Redistribute" />
-		<property name="useNagleAlgorithm" value="false" />
-	</bean> -->
+	
 
 </beans>

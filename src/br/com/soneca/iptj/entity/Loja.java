@@ -14,11 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@Entity(name="loja")
+@Entity
+@Table(name="loja")
 public class Loja implements br.com.soneca.iptj.entity.Entity {
 	
 	@Id
@@ -45,8 +47,7 @@ public class Loja implements br.com.soneca.iptj.entity.Entity {
 	@Column(name="cep", length=10)
 	private Integer cep;
 
-	@ManyToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name="item_loja", joinColumns = {@JoinColumn(name="loja_id"), @JoinColumn(name="item_id")})
+	@ManyToMany(fetch= FetchType.LAZY, cascade = CascadeType.ALL)	
 	private Set<Item> items;
 	
 	public Long getId() {

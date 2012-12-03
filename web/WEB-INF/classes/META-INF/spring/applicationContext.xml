@@ -23,7 +23,7 @@
 	<context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
 
 
-	<context:component-scan base-package="br.com.soneca.iptj" />
+	<context:component-scan base-package="br.com.soneca.iptj.entity" />
 	
 	<context:annotation-config />
 	

@@ -12,9 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,7 +24,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
-@Entity(name="item")
+@Entity
+@Table(name="item")
 public class Item implements br.com.soneca.iptj.entity.Entity {
 
 	@Id
@@ -39,8 +42,7 @@ public class Item implements br.com.soneca.iptj.entity.Entity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
-	@OneToMany
-	@JoinColumn(table="item_tipo", name="item_tipo", nullable=false, referencedColumnName="id")
+	@ManyToOne	
 	private ItemTipo itemTipo;
 	
 	@ManyToMany(mappedBy="items", fetch=FetchType.LAZY)

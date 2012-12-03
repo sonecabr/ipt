@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Entity
+@Table(name="item_tipo")
 public class ItemTipo implements br.com.soneca.iptj.entity.Entity {
 
 	@Id
