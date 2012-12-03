@@ -11,9 +11,10 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<context:annotation-config />
 	<context:component-scan base-package="br.com.soneca.iptj.web" />
 	<context:property-placeholder location="classpath:localhost.properties" />
-	<context:annotation-config />
+	
 	
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
@@ -42,11 +43,29 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="lang" />
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="pt" />
+	</bean>
+
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<ref bean="localeChangeInterceptor" />
+		</property>
+	</bean>
 	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
 		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}" 
 		p:password="${jdbc.password}"> </bean> -->
 
 
+	<!-- 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/DefaultDS" />
 	</bean>
@@ -64,8 +83,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven />
-
-	<!-- memcached -->
+	 -->
+	<!-- memcached --
 	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
 		<property name="servers" value="${memcached.url}" />
 		<property name="protocol" value="BINARY" />
@@ -76,10 +95,10 @@
 		</property>
 		<property name="opTimeout" value="1000" />
 		<property name="timeoutExceptionThreshold" value="1998" />
-		<!-- property name="hashAlg" value="KETAMA_HASH" /-->
+		
 		<property name="locatorType" value="CONSISTENT" />
 		<property name="failureMode" value="Redistribute" />
 		<property name="useNagleAlgorithm" value="false" />
-	</bean>
+	</bean> -->
 
 </beans>

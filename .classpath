@@ -38,5 +38,6 @@
 	<classpathentry kind="lib" path="lib/el-api.jar"/>
 	<classpathentry kind="lib" path="lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-entitymanager-4.1.8.Final.jar"/>
 	<classpathentry kind="output" path="web/WEB-INF/classes"/>
 </classpath>
